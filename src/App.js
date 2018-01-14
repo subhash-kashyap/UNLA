@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { Button } from 'antd';
+import { Button } from 'semantic-ui-react'
 import './App.css';
-import '../node_modules/antd/dist/antd.css';
-import Opsys from './Opsys.js'
+import Opsys, {OSName} from './Opsys.js';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
@@ -16,7 +16,20 @@ class App extends Component {
         <div className = "OScheck">
           <p><strong> The OS you are using is <br/><Opsys/> </strong> </p>
           <div>
-            <span>  <Button type="primary">H!t me</Button> </span>
+            <span>
+              <Button
+                primary
+                onClick={() => {
+                  if(OSName() === "Linux"){
+                    this.props.history.push("/login");
+                  }else{
+                    alert("This is a Linux Users only community");
+                  }
+                }}
+                >
+                H!t Me
+              </Button>
+            </span>
           </div>
         </div>
       </div>
